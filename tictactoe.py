@@ -22,7 +22,17 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    raise NotImplementedError
+    #nombre de coups déja joué = nombre de cases non EMPTY
+    count = 0
+    for row in board:
+        for cell in row:
+            if cell == EMPTY:
+                count += 1
+
+    if count % 2 == 1:
+        return X
+    else:
+        return O
 
 
 def actions(board):

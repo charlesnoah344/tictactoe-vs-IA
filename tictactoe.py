@@ -111,7 +111,22 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+    #si on a trouvé un gagnant
+    if winner is not None:
+        return True 
+    else:
+        table = []
+        for row in board:
+            for col in row:
+                table.append(col)
+        
+        #Si on a encore une case vide dans le tableau, la partie est en cours
+        if True in any(table == EMPTY):
+            return False
+        #S'il n'ya plus de case vide alors la partie est finie 
+        else:
+            return True
+         
 
 
 def utility(board):

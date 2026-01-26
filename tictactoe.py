@@ -64,7 +64,7 @@ def result(board, action):
     #application du move au board
     i,j = action
     new_board[i][j] = player(board)
-    
+
     return new_board
 
 
@@ -72,7 +72,40 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
+    #Dans ces listes on repertoriera les positions des coups joués par chaque joueur
+
+    #verification sur les lignes et les colonnes   
+    for i in range(board):
+        row = board[i]
+        if EMPTY not in row and len(set(row)) == 1:
+            if X in row:
+                return X
+            elif O in row:
+                return O
+        column = [board[j][i] for j in range(4)]
+        if EMPTY not in column and len(set(column)) == 1:
+            if X in column:
+                return X
+            elif O in column:
+                return O
+
+    #verification sur les diagonales
+    diag1 = [board[i][i] for i in range(board)]
+    diag2 = [board[i][3-i] for i in range(board)]
+
+    if (EMPTY not in diag1 and len(set(diag1)) == 1) :
+        if X in diag1:
+                return X
+        elif O in diag1:
+                return O
+        
+    if (EMPTY not in diag2 and len(set(diag2)) == 1) :
+        if X in diag2:
+                return X
+        elif O in diag2:
+                return O
+
+    return None
 
 
 def terminal(board):

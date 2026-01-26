@@ -138,9 +138,52 @@ def utility(board):
     else:
         return 0
     
-
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+    #Si la partie est finie
+    if terminal(board) == True:
+        return None
+    
+    if player(board) == X:
+        value, move = max_value(board)
+    else:
+        value, move = min_value(board)
+
+    return move
+
+def max_value(board):
+    """Les fonctions max_value et min_value s’appellent récursivement sur les coups possibles.
+    Lorsqu’elles atteignent un plateau terminal, elles doivent stopper la récursion et renvoyer une valeur précise"""
+    if terminal(board):
+        return utility(board), None
+
+    v = float('-inf')
+    best_move = None
+    for action in actions(board):
+        min_v, _ = min_value(result(board, action))
+        if min_v > v:
+            v = min_v
+            best_move = action
+    return v, best_move
+
+def min_value(board):
+    """Les fonctions max_value et min_value s’appellent récursivement sur les coups possibles.
+    Lorsqu’elles atteignent un plateau terminal, elles doivent stopper la récursion et renvoyer une valeur précise"""
+    if terminal(board):
+        return utility(board), None
+
+    v = float('inf')
+    best_move = None
+    for action in actions(board):
+        max_v, _ = max_value(result(board, action))
+        if max_v < v:
+            v = max_v
+            best_move = action
+    return v, best_move
+
+        
+    
+
+

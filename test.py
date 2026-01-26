@@ -29,6 +29,16 @@ def test_actions():
                    [X, EMPTY, O]]) == {(1,0), (1,2), (2,1)}
 
 def test_result():
+    with pytest.raises(RuntimeError):
+        result([[EMPTY, EMPTY, EMPTY],
+                [EMPTY, EMPTY, EMPTY],
+                [EMPTY, EMPTY, EMPTY]], (14,0))
+        
+    with pytest.raises(RuntimeError):
+        result([[X, EMPTY, EMPTY],
+                [EMPTY, EMPTY, EMPTY],
+                [EMPTY, EMPTY, EMPTY]], (0,0))
+
     assert result([[EMPTY, EMPTY, EMPTY],
                    [EMPTY, EMPTY, EMPTY],
                    [EMPTY, EMPTY, EMPTY]], (0,0)) == [[X, EMPTY, EMPTY],
@@ -39,16 +49,27 @@ def test_winner():
     assert winner([[X, O, O],
                    [EMPTY, X, O],
                    [EMPTY, EMPTY, X]]) == X
+    
     assert winner([[O, O, O],
                    [X, X, EMPTY],
                    [X, EMPTY, EMPTY]]) == O
+    
     assert winner([[X, O, EMPTY],
                    [EMPTY, O, EMPTY],
                    [X, O, X]]) == O
+    
     assert winner([[O, O, X],
                    [O, X, EMPTY],
                    [X, EMPTY, EMPTY]]) == X
+    
     assert winner([[EMPTY, EMPTY, EMPTY],
                    [EMPTY, EMPTY, EMPTY],
                    [EMPTY, EMPTY, EMPTY]]) == None
     
+    assert winner([[X, O, O],
+                   [EMPTY, X, EMPTY],
+                   [X, EMPTY, O]]) == None
+    
+    assert winner([[X, O, O],
+                   [O, X, X],
+                   [X, O, O]]) == None

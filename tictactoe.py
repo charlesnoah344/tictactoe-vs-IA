@@ -72,17 +72,16 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    #Dans ces listes on repertoriera les positions des coups joués par chaque joueur
 
     #verification sur les lignes et les colonnes   
-    for i in range(board):
+    for i in range(len(board)):
         row = board[i]
         if EMPTY not in row and len(set(row)) == 1:
             if X in row:
                 return X
             elif O in row:
                 return O
-        column = [board[j][i] for j in range(4)]
+        column = [board[j][i] for j in range(len(board))]
         if EMPTY not in column and len(set(column)) == 1:
             if X in column:
                 return X
@@ -90,8 +89,8 @@ def winner(board):
                 return O
 
     #verification sur les diagonales
-    diag1 = [board[i][i] for i in range(board)]
-    diag2 = [board[i][3-i] for i in range(board)]
+    diag1 = [board[i][i] for i in range(len(board))]
+    diag2 = [board[i][2-i] for i in range(len(board))]
 
     if (EMPTY not in diag1 and len(set(diag1)) == 1) :
         if X in diag1:

@@ -1,5 +1,5 @@
 import pytest
-from tictactoe import  initial_state, player, actions
+from tictactoe import  initial_state, player, actions, result
 
 EMPTY = None
 X = "X"
@@ -27,3 +27,10 @@ def test_actions():
     assert actions([[X, O, O],
                    [EMPTY, X, EMPTY],
                    [X, EMPTY, O]]) == {(1,0), (1,2), (2,1)}
+
+def test_result():
+    assert result([[EMPTY, EMPTY, EMPTY],
+                   [EMPTY, EMPTY, EMPTY],
+                   [EMPTY, EMPTY, EMPTY]], (0,0)) == [[X, EMPTY, EMPTY],
+                                                      [EMPTY, EMPTY, EMPTY],
+                                                      [EMPTY, EMPTY, EMPTY]]

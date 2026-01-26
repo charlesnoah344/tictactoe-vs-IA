@@ -1,5 +1,5 @@
 import pytest
-from tictactoe import  initial_state, player, actions, result, winner
+from tictactoe import  initial_state, player, actions, result, winner, utility
 
 EMPTY = None
 X = "X"
@@ -73,3 +73,16 @@ def test_winner():
     assert winner([[X, O, O],
                    [O, X, X],
                    [X, O, O]]) == None
+
+def test_utility():
+    assert utility([[X, O, O],
+                    [EMPTY, X, O],
+                    [EMPTY, EMPTY, X]]) == 1
+    
+    assert utility([[O, O, O],
+                    [X, X, EMPTY],
+                    [X, EMPTY, EMPTY]]) == -1
+    
+    assert utility([[X, O, O],
+                   [O, X, X],
+                   [X, O, O]]) == 0

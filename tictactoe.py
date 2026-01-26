@@ -112,18 +112,18 @@ def terminal(board):
     Returns True if game is over, False otherwise.
     """
     #si on a trouvé un gagnant
-    if winner is not None:
+    if winner(board) is not None:
         return True 
     else:
-        table = []
+        count = 0
         for row in board:
             for col in row:
-                table.append(col)
-        
+                if col == EMPTY:
+                    count += 1
         #Si on a encore une case vide dans le tableau, la partie est en cours
-        if True in any(table == EMPTY):
+        if count != 0:
             return False
-        #S'il n'ya plus de case vide alors la partie est finie 
+        #S'il n'y a plus de case vide alors la partie est finie 
         else:
             return True
          
@@ -131,9 +131,9 @@ def utility(board):
     """
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
-    if winner == X:
+    if winner(board) == X:
         return 1
-    elif winner == O:
+    elif winner(board) == O:
         return -1
     else:
         return 0

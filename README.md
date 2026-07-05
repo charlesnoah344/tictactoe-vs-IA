@@ -11,6 +11,10 @@ Le joueur choisit d'incarner `X` ou `O`, puis affronte l'ordinateur, qui joue de
 - IA utilisant `minimax` pour trouver le meilleur coup.
 - Detection automatique de la victoire, du match nul et de la fin de partie.
 
+## Démo vidéo
+
+
+
 ## Pre requis
 
 - Python 3.10 ou superieur.

@@ -13,6 +13,7 @@ Le joueur choisit d'incarner `X` ou `O`, puis affronte l'ordinateur, qui joue de
 
 ## Démo vidéo
 
+[Demo](https://youtu.be/uTODIz3yGHk)
 
 
 ## Pre requis
